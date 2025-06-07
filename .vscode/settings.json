@@ -1,0 +1,4 @@
+{
+    "appService.defaultWebAppToDeploy": "/subscriptions/b1a0c477-e389-40f1-9622-dacc28fc059e/resourceGroups/BlazorAppTraining/providers/Microsoft.Web/sites/blazor-examples-2",
+    "appService.deploySubpath": "."
+}
