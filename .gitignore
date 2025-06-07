@@ -482,3 +482,81 @@ $RECYCLE.BIN/
 
 # Vim temporary swap files
 *.swp
+
+##
+## Modern Development Tools & Patterns (2025)
+##
+
+# .NET Aspire
+.aspire/
+*.http
+*.rest
+
+# AI Development Tools
+.cursor/
+.continue/
+.aider*
+.gpt-engineer/
+.tabby/
+
+# Modern IDEs
+.fleet/
+.nova/
+
+# Container Development
+.devcontainer/
+.docker/
+docker-compose.override.yml
+.dockerignore
+
+# GitHub Development
+.github/codespaces/
+.gitpod.yml
+.gitpod.dockerfile
+
+# Local Development Settings
+appsettings.local.json
+appsettings.*.local.json
+*.local.settings.json
+
+# Blazor PWA Generated Files
+wwwroot/service-worker-assets.js
+wwwroot/manifest.webmanifest.tmp
+wwwroot/sw.js
+wwwroot/sw-registrator.js
+
+# Hot Reload & Development
+*.rsp.tmp
+.dotnet-suggest/
+.dotnet/
+
+# Modern Build Tools
+.nx/
+turbo.json
+
+# Cloud Development
+.azure/
+.aws/
+terraform.tfstate*
+.terraform/
+
+# Package Managers
+pnpm-lock.yaml
+bun.lockb
+.yarn/
+
+# Modern Testing
+.playwright/
+test-results/
+coverage/
+.nyc_output/
+
+# Environment Variables
+.env.local
+.env.development
+.env.staging
+.env.production
+
+# Backup files
+global.json.backup
+*.backup
