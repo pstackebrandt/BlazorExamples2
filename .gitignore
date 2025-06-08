@@ -198,6 +198,12 @@ publish/
 # in these scripts will be unencrypted
 PublishScripts/
 
+# Azure ARM templates and local service dependencies
+*.arm.json
+serviceDependencies.local.json
+serviceDependencies.*.json.user
+*.PublishSettings
+
 # NuGet Packages
 *.nupkg
 # NuGet Symbol Packages
