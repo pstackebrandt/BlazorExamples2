@@ -22,12 +22,25 @@ else
     app.UseHsts();
 }
 
-app.UseHttpsRedirection();
+// Azure handles HTTPS termination, so only redirect in development
+if (app.Environment.IsDevelopment())
+{
+    app.UseHttpsRedirection();
+}
 
+app.UseStaticFiles(); // Use traditional static files for Azure compatibility
 
 app.UseAntiforgery();
 
-app.MapStaticAssets();
+// Use MapStaticAssets for dev, traditional mapping for production
+if (app.Environment.IsDevelopment())
+{
+    app.MapStaticAssets();
+}
+else
+{
+    app.UseStaticFiles();
+}
 app.MapRazorComponents<App>()
     .AddInteractiveServerRenderMode()
     .AddInteractiveWebAssemblyRenderMode()
