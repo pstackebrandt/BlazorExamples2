@@ -2,8 +2,10 @@
 
 ## Todo
 
-- [ ] T1 Check content of the projects
-- [ ] T4 Check and update project settings
+- [] T5 Add example for render mode
+- [] T5.1 Add page for render mode
+- [] T5.2 Add example for render mode static
+- [] T5.3 Add example for render mode interactive
 
 ## In Progress
 
@@ -11,8 +13,14 @@
 
 ## Done
 
+- [x] T5 Add examples for data binding
+- [x] T5.1 Move Bindings page to subfolder
+- [x] T5.2 Add example for one-way binding
+
+- [x] T1 Check content of the projects
 - [x] T2 Add page for Bindings, link to it from home page, add navigation button
 - [x] T3 Update home page - activate home path, change project title to "PST Blazor Examples", add simple content
+- [x] T4 Check and update project settings
 - [x] T4.1 Fix dev launch settings - update port numbers, swap launch profiles for easy https run
 
 ## Notes
