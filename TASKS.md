@@ -2,20 +2,19 @@
 
 ## Todo
 
-- [] T5 Add example for render mode
-- [] T5.1 Add page for render mode
-- [] T5.2 Add example for render mode static
-- [] T5.3 Add example for render mode interactive
-
 ## In Progress
-
-- [ ] T
 
 ## Done
 
-- [x] T5 Add examples for data binding
-- [x] T5.1 Move Bindings page to subfolder
-- [x] T5.2 Add example for one-way binding
+- [x] T5 Add examples for render mode
+- [x] T5.1 Add page for render mode (overview page)
+- [x] T5.2 Add example for render mode static
+- [x] T5.3 Add example for render mode interactive
+- [x] T5.4 Add navigation links to home and nav menu
+
+- [x] T4 Add examples for data binding
+- [x] T4.1 Move Bindings page to subfolder
+- [x] T4.2Add example for one-way binding
 
 - [x] T1 Check content of the projects
 - [x] T2 Add page for Bindings, link to it from home page, add navigation button

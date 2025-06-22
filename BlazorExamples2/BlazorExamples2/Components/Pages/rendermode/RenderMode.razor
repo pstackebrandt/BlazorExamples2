@@ -1,0 +1,27 @@
+@page "/rendermode"
+
+<PageTitle>Render Mode Examples</PageTitle>
+
+<h1>Render Mode Examples</h1>
+<p>This section demonstrates the difference between static and interactive render modes in Blazor.</p>
+
+<div class="row mt-4">
+    <div class="col-md-6">
+        <div class="card">
+            <div class="card-body">
+                <h5 class="card-title">Static Counter</h5>
+                <p class="card-text">Example using static rendering mode - button clicks will not work.</p>
+                <a href="/rendermode/static" class="btn btn-outline-primary">View Static Counter</a>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-6">
+        <div class="card">
+            <div class="card-body">
+                <h5 class="card-title">Interactive Counter</h5>
+                <p class="card-text">Example using interactive server rendering mode - button clicks will work.</p>
+                <a href="/rendermode/interactive" class="btn btn-primary">View Interactive Counter</a>
+            </div>
+        </div>
+    </div>
+</div> 

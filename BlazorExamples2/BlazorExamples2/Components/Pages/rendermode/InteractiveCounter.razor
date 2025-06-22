@@ -1,0 +1,42 @@
+@page "/rendermode/interactive"
+@rendermode InteractiveServer
+
+<PageTitle>Interactive Counter Example</PageTitle>
+
+<h1>Interactive Counter Example</h1>
+
+<div class="alert alert-success" role="alert">
+    <strong>✅ Interactive:</strong> This counter works because the component is rendered interactively on the server.
+</div>
+
+<p>To enable this, the following directive is added to the top of the file. This tells Blazor to establish a connection to handle UI events.</p>
+
+<div class="card bg-light mb-3">
+    <div class="card-body">
+        <code>@@rendermode InteractiveServer</code>
+    </div>
+</div>
+
+<p>Try clicking the button below - notice that the count updates immediately:</p>
+<code>Current count: @@currentCount</code>
+
+<button class="btn btn-success" @onclick="IncrementCount">Click me (works!)</button>
+
+<div class="mt-3">
+    <p><strong>Why does it work?</strong></p>
+    <ul>
+        <li>Interactive server rendering maintains a connection to the server</li>
+        <li>JavaScript enables real-time UI updates</li>
+        <li>Event handlers like @@onclick are fully functional</li>
+        <li>Changes are processed on the server and sent to the browser instantly</li>
+    </ul>
+</div>
+
+@code {
+    private int currentCount = 0;
+
+    private void IncrementCount()
+    {
+        currentCount++;
+    }
+} 

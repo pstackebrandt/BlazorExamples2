@@ -1,0 +1,57 @@
+@page "/rendermode/static"
+
+<PageTitle>Static Counter Example</PageTitle>
+
+<h1>Static Counter Example</h1>
+
+<p>
+    Static server-side rendering (static SSR) is the <strong>default</strong> render mode in Blazor.
+    Because it's the default, no <code>@@rendermode</code> directive is needed for a page.
+    The component is rendered once on the server, and no interactivity is enabled.
+</p>
+
+<div class="alert alert-info" role="alert">
+    <h6 class="alert-heading">⚠️ No valid identifier for static rendering at page top</h6>
+    A page is designated as static by the <strong>complete absence</strong> of a <code>@@rendermode</code> directive. Unlike interactive modes, there is no valid identifier (like <code>@@rendermode Static</code>) that can be used at the top of a page. Attempting to add one will cause a compilation error.
+</div>
+
+<p>
+    If you need to ensure a child component remains static even if its parent is interactive,
+    you can explicitly set its render mode to static like this:
+</p>
+
+<div class="card bg-light mb-3">
+    <div class="card-body">
+        <code>&lt;MyStaticComponent @@rendermode="RenderMode.Static" /&gt;</code>
+    </div>
+</div>
+
+<div class="alert alert-warning" role="alert">
+    <strong>⚠️ Static Rendering:</strong> This counter will NOT update when you click the button because it uses static rendering mode (no rendermode directive).
+</div>
+
+<p>Try clicking the button below - notice that the count does not change:</p>
+<code>Current count: @@currentCount</code>
+
+<p role="status">Current count: @currentCount</p>
+
+<button class="btn btn-primary" @onclick="IncrementCount">Click me (won't work)</button>
+
+<div class="mt-3">
+    <p><strong>Why doesn't it work?</strong></p>
+    <ul>
+        <li>Static rendering processes the component on the server once</li>
+        <li>No JavaScript interactivity is generated</li>
+        <li>Event handlers like @@onclick are not functional</li>
+        <li>The page would need a full reload to show changes</li>
+    </ul>
+</div>
+
+@code {
+    private int currentCount = 0;
+
+    private void IncrementCount()
+    {
+        currentCount++;
+    }
+} 
