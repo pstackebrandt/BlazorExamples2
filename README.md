@@ -25,6 +25,11 @@ This solution showcases Blazor's hybrid rendering capabilities, combining both s
 - Sample components for learning and reference
 - Azure deployment ready
 
+## Version Information
+
+Current version: **1.1.0**  
+For detailed versioning information and guidelines, see [VERSIONING.md](VERSIONING.md).
+
 ## Getting Started
 
 Open the solution in Visual Studio or your preferred IDE and run the main BlazorExamples2 project.

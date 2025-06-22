@@ -6,6 +6,8 @@
 
 ## Done
 
+- [x] T7 Add versioning information, version 1.1.0
+- [x] T7.1 Document handling of versioning information
 - [x] T6 Change to central package management
 
 - [x] T5 Add examples for render mode
