@@ -6,6 +6,8 @@
 
 ## Done
 
+- [x] T6 Change to central package management
+
 - [x] T5 Add examples for render mode
 - [x] T5.1 Add page for render mode (overview page)
 - [x] T5.2 Add example for render mode static
