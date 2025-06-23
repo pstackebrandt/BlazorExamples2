@@ -27,7 +27,7 @@ This solution showcases Blazor's hybrid rendering capabilities, combining both s
 
 ## Version Information
 
-Current version: **1.1.0**  
+Current version: **1.2.0**  
 For detailed versioning information and guidelines, see [VERSIONING.md](VERSIONING.md).
 
 ## Getting Started
