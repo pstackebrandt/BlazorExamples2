@@ -6,6 +6,9 @@
 # dotenv files
 .env
 
+# Deployment artifacts
+blazor-app.zip
+
 # User-specific files
 *.rsuser
 *.suo
