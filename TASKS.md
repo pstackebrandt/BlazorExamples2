@@ -6,6 +6,14 @@
 
 ## Done
 
+- [ ] T9 Fix deployment script paths and commands
+- [ ] T9.1 Update deployment script to use same paths as manual commands
+- [ ] T9.2 Fix PowerShell command execution issues in deployment script
+- [ ] T9.4 Update version to 1.2.0
+
+- [x] T11 Add blazor-app.zip to .gitignore
+- [x] T10 Improve VERSIONING.md documentation (remove current version, add examples)
+
 - [x] T8 Create deployment script
 - [x] T8.1 Document deployment process
 - [x] T8.2 Update deployment script to use deploy.env for parameters

@@ -1,18 +1,11 @@
 # Versioning Strategy
 
-## Current Version
-
-**Version**: 1.1.0  
-**AssemblyVersion**: 1.1.0.0  
-**FileVersion**: 1.1.0.0  
-**PackageVersion**: 1.1.0
-
 ## Version Number Format
 
 We follow **Semantic Versioning (SemVer)** with the format: `MAJOR.MINOR.PATCH`
 
 - **MAJOR** (1): Breaking changes, major feature releases
-- **MINOR** (1): New features, backward-compatible additions
+- **MINOR** (2): New features, backward-compatible additions
 - **PATCH** (0): Bug fixes, minor improvements
 
 ## Version Types Explained
@@ -121,23 +114,30 @@ Manages central package versioning for NuGet dependencies:
 
 ## How to Update Versions
 
-### Step 1: Update Directory.Build.props
+### Update Directory.Build.props
 
 Edit the version numbers in `Directory.Build.props`:
 
 ```xml
-<Version>1.2.0</Version>           <!-- For new features -->
+<!-- Example: For new features -->
+<Version>1.2.0</Version>
 <AssemblyVersion>1.2.0.0</AssemblyVersion>
 <FileVersion>1.2.0.0</FileVersion>
 <PackageVersion>1.2.0</PackageVersion>
 ```
 
-### Step 2: Update This Documentation
+### Beware of redundancy
 
-- Update the "Current Version" section
-- Add entry to version history if needed
+Don't use current version number in README.md or VERSIONING.md. Don't use a version history. file.
 
-### Step 3: Update Package Versions (if needed)
+### Tag the release in Git (optional)
+
+```powershell
+git tag -a v1.2.0 -m "List main changes here"
+git push origin v1.2.0
+```
+
+### Update Package Versions (if needed)
 
 Edit `Directory.Packages.props` to update NuGet package versions:
 
@@ -145,25 +145,18 @@ Edit `Directory.Packages.props` to update NuGet package versions:
 <PackageVersion Include="PackageName" Version="NewVersion" />
 ```
 
-### Step 4: Commit Changes
+### Commit Changes
 
 - Use conventional commit format: `feat: bump version to 1.2.0`
 - Include version update in commit message
 
-## Version History
-
-| Version | Date    | Changes                                       |
-| ------- | ------- | --------------------------------------------- |
-| 1.1.0   | Initial | Initial version with central versioning setup |
-
 ## Best Practices
 
-1. **Always update this file** when changing versions
-2. **Use conventional commits** for version-related changes
-3. **Test thoroughly** after version updates
-4. **Document breaking changes** clearly
-5. **Consider release notes** for major/minor versions
-6. **Tag releases** in Git for important versions
+**Use conventional commits** for version-related changes
+**Test thoroughly** after version updates
+**Document breaking changes** clearly
+**Consider release notes** for major/minor versions
+**Tag releases** in Git for important versions
 
 ## Tools and Commands
 
@@ -180,13 +173,6 @@ dotnet build
 # Update all packages to latest versions
 dotnet list package --outdated
 dotnet add package PackageName --version NewVersion
-```
-
-### Create Release Tag
-
-```powershell
-git tag -a v1.1.0 -m "Release version 1.1.0"
-git push origin v1.1.0
 ```
 
 ## Notes
