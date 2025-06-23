@@ -1,5 +1,6 @@
 using BlazorExamples2.Client.Pages;
 using BlazorExamples2.Components;
+using BlazorExamples2.Services;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -7,6 +8,9 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddRazorComponents()
     .AddInteractiveServerComponents()
     .AddInteractiveWebAssemblyComponents();
+
+// Register version service
+builder.Services.AddScoped<IVersionService, VersionService>();
 
 var app = builder.Build();
 

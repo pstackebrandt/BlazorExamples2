@@ -1,4 +1,7 @@
-﻿<div class="top-row ps-3 navbar navbar-dark">
+﻿@using BlazorExamples2.Services
+@inject IVersionService VersionService
+
+<div class="top-row ps-3 navbar navbar-dark">
     <div class="container-fluid">
         <a class="navbar-brand" href="">BlazorExamples2</a>
     </div>
@@ -38,5 +41,9 @@
             </NavLink>
         </div>
     </nav>
+    
+    <div class="version-info px-3 mt-auto pb-3">
+        <small>@VersionService.GetVersion()</small>
+    </div>
 </div>
 
