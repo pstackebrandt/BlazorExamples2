@@ -6,7 +6,8 @@
 
 ## Done
 
-- [x] B1 Fix InteractiveCounter.razor, output field was removed
+- [x] T8 Create deployment script
+- [x] T8.1 Document deployment process
 
 - [x] T7 Add versioning information, version 1.1.0
 - [x] T7.1 Document handling of versioning information
