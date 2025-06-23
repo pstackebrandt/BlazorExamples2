@@ -7,7 +7,7 @@ This document outlines the steps to deploy the Blazor application to an Azure We
 Before you begin, ensure you have the following installed and configured:
 
 1. **PowerShell**: The deployment script is a PowerShell script (`.ps1`).
-2. **Azure CLI**: You must have the Azure CLI installed. You can find installation instructions [here](https://docs.microsoft.com/en-us/cli/azure/install-azure-cli).
+2. **Azure CLI**: You must have the Azure CLI installed. You can find installation instructions in the [Azure CLI installation instructions](https://docs.microsoft.com/en-us/cli/azure/install-azure-cli).
 3. **Azure Login**: You need to be logged into your Azure account through the CLI. Run the following command and follow the prompts:
 
     ```sh
@@ -26,21 +26,15 @@ Before you begin, ensure you have the following installed and configured:
 
 ## Configuration
 
-The deployment script `deploy.ps1` needs to be configured with your specific Azure resource names.
+1. Copy `scripts/deployment/deploy.env.example` to `scripts/deployment/deploy.env`.
+2. Open `deploy.env` and fill in your Azure resource group and web app name:
 
-1. Open the `scripts/deployment/deploy.ps1` file.
-2. Locate the "Script Parameters" section at the top of the file.
-3. Update the following variables with your values:
-
-    ```powershell
-    # The name of your resource group in Azure.
-    $resourceGroupName = "<your-resource-group-name>"
-
-    # The name of your Azure App Service.
-    $webAppName = "<your-web-app-name>"
+    ```env
+    RESOURCE_GROUP_NAME=BlazorAppTraining
+    WEB_APP_NAME=blazor-examples-2
     ```
 
-    Replace `<your-resource-group-name>` and `<your-web-app-name>` with the actual names of your Azure resources.
+   **Note:** `deploy.env` is ignored by git and should not be committed.
 
 ## Running the Script
 
@@ -52,4 +46,12 @@ To run the script, open a PowerShell terminal at the project root and execute th
 ./scripts/deployment/deploy.ps1
 ```
 
-The script will then clean, publish, package, and deploy your application to Azure.
+The script will then clean, publish, package, and deploy your application to Azure using the parameters from your environment file.
+
+### Testing with Dry Run
+
+To test the script without performing a real deployment, you can use the `-DryRun` flag. This will print the commands that would be executed, but will not actually run them.
+
+```powershell
+./scripts/deployment/deploy.ps1 -DryRun
+```

@@ -8,6 +8,9 @@
 
 - [x] T8 Create deployment script
 - [x] T8.1 Document deployment process
+- [x] T8.2 Update deployment script to use deploy.env for parameters
+- [x] T8.3 Improve deployment script structure and comments
+- [x] T8.4 Add dry-run support to deployment script
 
 - [x] T7 Add versioning information, version 1.1.0
 - [x] T7.1 Document handling of versioning information

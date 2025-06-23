@@ -1,64 +1,101 @@
-# This script builds and deploys the Blazor application to Azure.
-# It is rather specific for my own current use.
- 
-# IMPORTANT:
-# This script is designed to be run from the root of the project,
-# where the .sln file is located.
+# Deploys the Blazor application to Azure Web App.
+#
+# Usage:
+# Run this script from the root directory, where the .sln file is located.
+#   pwsh ./scripts/deployment/deploy.ps1
+#
+# - DryRun shows commands without executing them.
+#   pwsh ./scripts/deployment/deploy.ps1 -DryRun
+#
+
 #
 # Before running, ensure you have:
-# 1. Logged in to Azure with the Azure CLI (`az login`).
-# 2. Set the correct Azure subscription (`az account set --subscription <your-subscription-id>`).
+# 1. Copied deploy.env.example to deploy.env and filled in your values.
+# 2. Logged in to Azure with the Azure CLI (`az login`).
+# 3. Set the correct Azure subscription (`az account set --subscription <your-subscription-id>`).
 
-# --- Script Parameters ---
+param(
+    [switch]$DryRun
+)
 
-# The name of your resource group in Azure.
-$resourceGroupName = "<your-resource-group-name>"
+# --- Load Deployment Environment Variables from deploy.env ---
+$envFile = "$PSScriptRoot/deploy.env"
+if (Test-Path $envFile) {
+    Get-Content $envFile | ForEach-Object {
+        if ($_ -match '^(.*?)=(.*)$') {
+            $name = $matches[1].Trim()
+            $value = $matches[2].Trim()
+            Set-Variable -Name $name -Value $value -Scope Script
+        }
+    }
+} else {
+    Write-Error "Environment file $envFile not found."
+    exit 1
+}
 
-# The name of your Azure App Service.
-$webAppName = "<your-web-app-name>"
+$ResourceGroupName = $RESOURCE_GROUP_NAME
+$WebAppName = $WEB_APP_NAME
 
+Write-Host "`n--- Deployment Variables ---"
+Write-Host "Resource Group: $ResourceGroupName"
+Write-Host "Web App Name:   $WebAppName"
+Write-Host "---------------------------`n"
+
+# --- Script Configuration ---
 # The path to the main project file.
 $projectPath = "./BlazorExamples2/BlazorExamples2/BlazorExamples2.csproj"
-
 # The output directory for the published files.
 $publishDir = "./BlazorExamples2/BlazorExamples2/bin/Publish"
-
 # The path for the deployment zip file.
 $zipPath = "./BlazorExamples2/BlazorExamples2/blazor-app.zip"
 
+# --- Helper Functions ---
+# Safely executes a command, supporting -DryRun mode.
+function Invoke-CommandSafe {
+    param([string]$Command)
+    if ($DryRun) {
+        Write-Host "[DryRun] $Command"
+    } else {
+        & powershell -NoProfile -Command $Command
+    }
+}
 
 # --- Build and Deploy Steps ---
 
 # 1. Clean the project.
 Write-Host "Cleaning the project..."
-dotnet clean $projectPath
-if ($LASTEXITCODE -ne 0) {
+Invoke-CommandSafe "dotnet clean $projectPath"
+if (-not $DryRun -and $LASTEXITCODE -ne 0) {
     Write-Error "dotnet clean failed."
     exit 1
 }
+Write-Host ""
 
 # 2. Publish the project to a local folder.
 Write-Host "Publishing the project..."
-dotnet publish $projectPath -c Release -o $publishDir
-if ($LASTEXITCODE -ne 0) {
+Invoke-CommandSafe "dotnet publish $projectPath -c Release -o $publishDir"
+if (-not $DryRun -and $LASTEXITCODE -ne 0) {
     Write-Error "dotnet publish failed."
     exit 1
 }
+Write-Host ""
 
 # 3. Create a zip file from the published output.
 Write-Host "Creating deployment package..."
-Compress-Archive -Path "$publishDir/*" -DestinationPath $zipPath -Force
-if ($LASTEXITCODE -ne 0) {
+Invoke-CommandSafe "Compress-Archive -Path '$publishDir/*' -DestinationPath $zipPath -Force"
+if (-not $DryRun -and $LASTEXITCODE -ne 0) {
     Write-Error "Compress-Archive failed."
     exit 1
 }
+Write-Host ""
 
 # 4. Deploy the zip file to Azure Web App.
 Write-Host "Deploying to Azure..."
-az webapp deploy --resource-group $resourceGroupName --name $webAppName --src-path $zipPath --type zip
-if ($LASTEXITCODE -ne 0) {
+Invoke-CommandSafe "az webapp deploy --resource-group $ResourceGroupName --name $WebAppName --src-path $zipPath --type zip"
+if (-not $DryRun -and $LASTEXITCODE -ne 0) {
     Write-Error "Azure deployment failed."
     exit 1
 }
+Write-Host ""
 
 Write-Host "Deployment completed successfully." 

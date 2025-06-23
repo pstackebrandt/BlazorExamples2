@@ -570,3 +570,6 @@ global.json.backup
 # Zip for deployment of Blazor Examples 2
 BlazorExamples2/BlazorExamples2/blazor-app.zip
 VS_Azure_Connection_Troubleshooting.md
+
+# Ignore user-specific deployment environment file
+scripts/deployment/deploy.env
