@@ -1,7 +1,11 @@
-# Deploys the Blazor application to Azure Web App.
+# DEFECT Deploys the Blazor application to Azure Web App.
 #
+# DEFECT: This script is not working as expected.
+# It is uexpectedly influenced by the import of parameters at script start.
+# This leads to wrong collection of files. Perhaps we need additional changes because of the placement of the script. Use the deploy.ps1 script in the solution root directory for now.
+
 # Usage:
-# Run this script from the root directory, where the .sln file is located.
+# Run this script from this directory, not from the solution root directory.
 #   pwsh ./scripts/deployment/deploy.ps1
 #
 # - DryRun shows commands without executing them.
