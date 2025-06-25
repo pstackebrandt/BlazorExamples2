@@ -1,4 +1,4 @@
-# Deployment Process
+# Deployment Process (DEPRECATED)
 
 This document outlines the steps to deploy the Blazor application to an Azure Web App using the provided PowerShell script.
 
