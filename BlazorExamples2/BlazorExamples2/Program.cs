@@ -32,19 +32,11 @@ if (app.Environment.IsDevelopment())
     app.UseHttpsRedirection();
 }
 
-app.UseStaticFiles(); // Use traditional static files for Azure compatibility
+app.UseStaticFiles(); // Basic static files (always needed)
+app.MapStaticAssets(); // Modern static assets (all environments)
 
 app.UseAntiforgery();
 
-// Use MapStaticAssets for dev, traditional mapping for production
-if (app.Environment.IsDevelopment())
-{
-    app.MapStaticAssets();
-}
-else
-{
-    app.UseStaticFiles();
-}
 app.MapRazorComponents<App>()
     .AddInteractiveServerRenderMode()
     .AddInteractiveWebAssemblyRenderMode()

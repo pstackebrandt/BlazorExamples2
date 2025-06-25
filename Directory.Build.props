@@ -1,15 +1,27 @@
 <Project>
   <PropertyGroup>
     <!-- Central Version Management -->
-    <Version>1.2.3</Version>
-    <AssemblyVersion>1.2.3.0</AssemblyVersion>
-    <FileVersion>1.2.3.0</FileVersion>
-    <PackageVersion>1.2.3</PackageVersion>
+    <Version>1.2.4</Version>
+    <AssemblyVersion>1.2.4.0</AssemblyVersion>
+    <FileVersion>1.2.4.0</FileVersion>
+    <PackageVersion>1.2.4</PackageVersion>
     
     <!-- Additional Metadata -->
     <Company>Peter Stackebrandt</Company>
     <Product>BlazorExamples2</Product>
     <Description>A Blazor Web App solution demonstrating modern web development with .NET 9</Description>
     <Copyright>Copyright © $([System.DateTime]::Now.Year)</Copyright>
+    
+    <!-- .NET 9 Blazor CSS Isolation Fix -->
+    <!-- Fixes CSS isolation bundling in publish mode (required for .NET 9) -->
+    <StaticWebAssetBasePath>$(StaticWebAssetBasePath)</StaticWebAssetBasePath>
+    <!-- Enable compression for CSS/JS files for better performance -->
+    <BlazorEnableCompression>true</BlazorEnableCompression>
+    
+    <!-- Additional Blazor Optimizations -->
+    <!-- Cache framework resources for faster loading -->
+    <BlazorCacheBootResources>true</BlazorCacheBootResources>
+    <!-- Maintain localization support -->
+    <InvariantGlobalization>false</InvariantGlobalization>
   </PropertyGroup>
 </Project> 
