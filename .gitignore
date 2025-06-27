@@ -576,3 +576,4 @@ VS_Azure_Connection_Troubleshooting.md
 
 # Ignore user-specific deployment environment file
 scripts/deployment/deploy.env
+deploy.env
