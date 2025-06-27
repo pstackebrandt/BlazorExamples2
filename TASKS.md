@@ -4,11 +4,9 @@
 
 ## In Progress
 
-- [ ] T9 Fix deployment script paths and commands
-- [ ] T9.1 Update deployment script to use same paths as manual commands
-- [ ] T9.2 Fix PowerShell command execution issues in deployment script
-
 ## Done
+
+- [x] T9 Move deployment script to root, fix
 
 - [x] T12 Add version display to navigation menu
 - [x] T12.1 Create VersionService to read assembly version
