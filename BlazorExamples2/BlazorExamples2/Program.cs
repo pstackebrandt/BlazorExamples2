@@ -12,6 +12,9 @@ builder.Services.AddRazorComponents()
 // Register version service
 builder.Services.AddScoped<IVersionService, VersionService>();
 
+// Add health checks
+builder.Services.AddHealthChecks();
+
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
@@ -43,5 +46,8 @@ app.MapRazorComponents<App>()
     .AddInteractiveServerRenderMode()
     .AddInteractiveWebAssemblyRenderMode()
     .AddAdditionalAssemblies(typeof(BlazorExamples2.Client._Imports).Assembly);
+
+// Map health check endpoint
+app.MapHealthChecks("/health");
 
 app.Run();
