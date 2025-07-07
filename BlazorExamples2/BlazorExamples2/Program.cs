@@ -32,19 +32,13 @@ if (app.Environment.IsDevelopment())
     app.UseHttpsRedirection();
 }
 
-app.UseStaticFiles(); // Use traditional static files for Azure compatibility
-
 app.UseAntiforgery();
 
-// Use MapStaticAssets for dev, traditional mapping for production
-if (app.Environment.IsDevelopment())
-{
-    app.MapStaticAssets();
-}
-else
-{
-    app.UseStaticFiles();
-}
+// Static files handling - Modern .NET 9 approach
+// UPDATED: Azure App Service now fully supports MapStaticAssets() as of .NET 9 GA (Nov 2024)
+// See: AZURE-MAPSTATIC-ASSETS-COMPATIBILITY.md for details
+// FALLBACK: If deployment fails, replace with: app.UseStaticFiles();
+app.MapStaticAssets();
 app.MapRazorComponents<App>()
     .AddInteractiveServerRenderMode()
     .AddInteractiveWebAssemblyRenderMode()

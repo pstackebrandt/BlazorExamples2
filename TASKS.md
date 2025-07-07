@@ -10,6 +10,12 @@
 
 ## Done
 
+- [x] T15 Modernize static file handling for Azure App Service
+- [x] T15.1 Research Azure App Service compatibility with MapStaticAssets() in .NET 9
+- [x] T15.2 Create comprehensive documentation about Azure compatibility findings
+- [x] T15.3 Update Program.cs to use modern MapStaticAssets() approach
+- [x] T15.4 Remove redundant conditional logic for static files
+
 - [x] T14 Create version implementation guide for reuse in other projects
 - [x] T14.1 Document complete step-by-step process for adding versioning to .NET projects
 
