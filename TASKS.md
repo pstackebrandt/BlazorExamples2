@@ -2,9 +2,16 @@
 
 ## Todo
 
+- [ ] T13 Show render modes
+- [ ] T13.1 Show loading state and implicit render mode
+- [ ] T13.2 Show render mode
+
 ## In Progress
 
 ## Done
+
+- [x] T14 Create version implementation guide for reuse in other projects
+- [x] T14.1 Document complete step-by-step process for adding versioning to .NET projects
 
 - [x] T9 Move deployment script to root, fix
 
